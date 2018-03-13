@@ -13,7 +13,11 @@ use App\Http\Middleware\CheckUserConfirmed;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->check()){
+        return redirect('/home');
+    }else{
+        return redirect('/login');
+    }
 });
 
 Auth::routes();
